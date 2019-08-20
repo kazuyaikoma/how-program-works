@@ -9,19 +9,26 @@
 #include <stdio.h>
 #include <string.h>
 
-void main() {
+void researchDecimalNumber(float);
+
+int main() {
+    researchDecimalNumber(0.1);
+    return 0;
+}
+
+// 単精度浮動小数点数で、引数に渡された任意の10進数がどのように表現されているか調べる
+void researchDecimalNumber(float f) {
     // float: 4バイトの単精度浮動小数点実数 (有効桁数は7ケタ)
     // double: 8バイトの倍精度浮動小数点実数 (有効桁数は16ケタ)
-    float data;
+    float data = f;
     // short: 2バイトの符号付整数
     // long: 4バイトの符号付整数
     unsigned long buff;
-    int i;
-    char s[34+1];
-    
-    data = (float)0.75;
     
     memcpy(&buff, &data, 4);
+    
+    int i;
+    char s[34+1];
     
     // 1bitずつ走査
     for (i=34-1; i>=0; i--) {
